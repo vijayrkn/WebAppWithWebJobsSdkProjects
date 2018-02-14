@@ -2,12 +2,6 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.0</TargetFramework>
-
-    <MSDeployPackagePublishDependsOn>
-      PublishWebJobs;
-    </MSDeployPackagePublishDependsOn>
-
-    <WebJobProjects>$(MSBuildProjectDirectory)\..\ConsoleApp24\ConsoleApp24.csproj;$(MSBuildProjectDirectory)\..\ConsoleApp1\ConsoleApp1.csproj</WebJobProjects>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,8 +13,15 @@
   </ItemGroup>
 
 
-  <Target Name="PublishWebJobs">
-    <Message Text="$(WebJobProjects)" Importance="high" />
+  <PropertyGroup>
+    <MSDeployPackagePublishDependsOn>
+      CopyWebJobs;
+    </MSDeployPackagePublishDependsOn>
+    
+    <WebJobProjects>$(MSBuildProjectDirectory)\..\ConsoleApp24\ConsoleApp24.csproj;$(MSBuildProjectDirectory)\..\ConsoleApp1\ConsoleApp1.csproj</WebJobProjects>
+  </PropertyGroup>
+
+  <Target Name="CopyWebJobs">
     <MSBuild Projects="$(WebJobProjects)" Targets="Restore;Build;" Properties="DeployOnBuild=true;Configuration=$(Configuration);WebPublishMethod=FileSystem;PublishUrl=$(PublishIntermediateOutputPath)" RunEachTargetSeparately="true" StopOnFirstFailure="true" />
   </Target>
 
