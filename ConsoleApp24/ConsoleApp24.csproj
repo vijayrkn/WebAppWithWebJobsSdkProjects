@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk;Microsoft.NET.Sdk.Publish">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <IsWebJobProject>true</IsWebJobProject>
+    <WebJobName>$(MsBuildProjectName)</WebJobName>
+    <WebJobType>Continuous</WebJobType>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+</Project>

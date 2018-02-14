@@ -1,0 +1,1 @@
+﻿msbuild WebApplication1.csproj /p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PublishProfile=Default
